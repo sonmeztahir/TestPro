@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import CustomCreation, LoginForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 def index(request):
     return render(request, 'index.html')
@@ -12,7 +12,7 @@ def login_view(request):
         password = form.cleaned_data.get('password')
         user = authenticate(username=username, password=password)
         login(request, user)
-        return redirect('index')
+        return redirect('accounts:index')
     return render(request, 'accounts/login.html', {'form':form})
 
 
@@ -22,5 +22,10 @@ def register_view(request):
         user = form.save()
         login(request, user)
         
-        return redirect('index')
+        return redirect('accounts:index')
     return render(request, 'accounts/register.html', {'form':form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('accounts:index')
