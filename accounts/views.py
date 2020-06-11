@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import CustomCreation, LoginForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
-def index(request):
-    return render(request, 'index.html')
 
 def login_view(request):
     form = LoginForm(request.POST or None)
@@ -12,7 +11,8 @@ def login_view(request):
         password = form.cleaned_data.get('password')
         user = authenticate(username=username, password=password)
         login(request, user)
-        return redirect('accounts:index')
+        messages.success(request, "Giriş Başarılı")
+        return redirect('home:index')
     return render(request, 'accounts/login.html', {'form':form})
 
 
@@ -21,11 +21,12 @@ def register_view(request):
     if form.is_valid():
         user = form.save()
         login(request, user)
-        
-        return redirect('accounts:index')
+
+        return redirect('home:index')
     return render(request, 'accounts/register.html', {'form':form})
 
 
 def logout_view(request):
     logout(request)
-    return redirect('accounts:index')
+    messages.success(request, "Başarılı Bir Şekilde Çıkış Yapıldı")
+    return redirect('home:index')

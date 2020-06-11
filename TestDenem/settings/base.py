@@ -25,7 +25,6 @@ SECRET_KEY = '6qmuese6g@#sk03t8^f*xksvbqe*w9l=y08pp-ityui@$=($d2'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -38,8 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #My App
-    'accounts'
-   
+    'accounts',
+    'home',
+
+    #3.Paryt
+    'crispy_forms',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
@@ -122,4 +125,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
