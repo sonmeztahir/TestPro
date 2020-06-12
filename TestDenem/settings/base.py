@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     #3.Paryt
     'crispy_forms',
     'django_cleanup',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -124,6 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -131,3 +133,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+CKEDITOR_JQUERY_URL = os.path.join(STATIC_URL, 'js/jquery.slim.min.js')
+CKEDITOR_CONFIGS = {
+    'default': {
+        # 'toolbar': 'full',
+        # 'height': 300,
+        'width': '100%',
+    },
+}
