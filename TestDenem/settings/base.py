@@ -36,9 +36,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     #My App
     'accounts',
     'home',
+    'ders',
+    'sinav',
 
     #3.Paryt
     'crispy_forms',

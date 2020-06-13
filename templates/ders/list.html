@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container bg-secondary rounded">
+        <div class="row col-md-8 mt-3 p-2"></div>
+
+        {% for item in themes %}
+            <div class="card mb-3">
+
+                  <div class="card-body">
+                        <h5 class="card-title">{{item.title}}</h5>
+                        <p class="card-text">{{item.content|safe|truncatechars:200}}</p>
+                        <p class="card-text"><small class="text-muted">{{item.publishing_date}}</small></p>
+                        <p><a href="{{ item.get_absolute_url }}" class="btn btn-primary" role="button">Oku</a></p>
+
+                  </div>
+            </div>
+        {% endfor %}
+        <div class="row col-md-8 mt-3"></div>
+
+    </div>
+
+{% endblock body %}
