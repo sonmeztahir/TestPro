@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block body %}
+<form method="post">
+        {% csrf_token %}
+        {% if themes %}
+            Adı: <input type="text" name="Adı" value="{{request.user.get_full_name}}"><br>
+            Numarası: <input type="text" name="Numarası" value="{{request.user.numara}}"><br>
+            Sınıfı: <input type="text" name="Sınıfı" value="{{request.user.sinif}}"><br>
+            Sınavın Adı: <input type="text" name="Sınav Adı" value="{{ themes.quiz_name }}"><br>
+            Cevap Anahtarı: <input type="text" name="Cevap Anahtarı" value="{{ themes.answer_key }}"><br>
+
+            {% for i in themes.answer_key %}
+                cevap{{ forloop.counter }} <input type="radio" name="cevap{{ forloop.counter }}" value="a" placeholder="a"> <input type="radio" name="cevap{{ forloop.counter }}" value="b"> <input type="radio" name="cevap{{ forloop.counter }}" value="c"> <input type="radio" name="cevap{{ forloop.counter }}" value="d">
+                        <br>
+            {% endfor %}
+        <br> <input type="submit" value="Kabul Et">
+        {% endif %}
+    </form>
+{% endblock body %}

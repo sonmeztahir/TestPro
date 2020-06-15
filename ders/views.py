@@ -3,7 +3,7 @@ from .models import ThemeModel
 
 def list_view(request):
     themes = ThemeModel.objects.all()
-    return render(request,"ders/list.html", {'themes': themes})
+    return render(request,"ders/index.html", {'themes': themes})
 
 def detail_view(request, id):
     themes = get_object_or_404(ThemeModel, id=id)
