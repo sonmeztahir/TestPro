@@ -31,7 +31,7 @@ def create_view(request, id):
         cevap = ''
         for i in range(1, len(request.POST.get('Cevap Anahtarı')) + 1):
             cevap = "{}{}".format(cevap, request.POST.get('cevap{}'.format(i), None))
-        answer = cevap
+        answer = cevap.replace("None", "-")
 
         quiz_result = karsilastir(answer, answer_key)
 
