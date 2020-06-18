@@ -6,6 +6,6 @@ app_name = 'sinav'
 urlpatterns = [
    path('', index_view, name='index'),
    path('<int:id>/create', create_view, name='create'),
-   path('/list', list_view, name='list'),
+   path('list/', list_view, name='list'),
 
 ]

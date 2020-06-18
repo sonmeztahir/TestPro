@@ -8,7 +8,7 @@ class QuizModel(models.Model):
     publishing_date = models.DateTimeField(auto_now_add=True, verbose_name='Yayımlanma Tarihi')
 
     def __str__(self):
-        return self.answer_key
+        return self.quiz_name
 
     def get_absolute_url(self):
         return reverse('sinav:create', kwargs={'id':self.id})

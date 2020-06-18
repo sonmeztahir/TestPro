@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="table-responsive">
+    <table class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Sınıfı</th>
+            <th scope="col">Numarası</th>
+            <th scope="col">Adı Soyadı</th>
+            <th scope="col">Sınav Adı</th>
+            <th scope="col">Cevap Anahtarı</th>
+            <th scope="col">Cevapları</th>
+            <th scope="col">Aldığı Puan</th>
+            <th scope="col">Tarihi</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if context %}
+        {% for item in context %}
+        <tr>
+            <td>{{item.department}}</td>
+            <td>{{item.number}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.quiz_name}}</td>
+            <td>{{item.answer_key}}</td>
+            <td>{{item.answer}}</td>
+            <td>{{item.quiz_result}}</td>
+            <td>{{item.publishing_date}}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock body %}

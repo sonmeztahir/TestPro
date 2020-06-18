@@ -13,8 +13,20 @@
             Cevap Anahtarı: <input type="text" name="Cevap Anahtarı" value="{{ themes.answer_key }}"><br>
 
             {% for i in themes.answer_key %}
-                cevap{{ forloop.counter }} <input type="radio" name="cevap{{ forloop.counter }}" value="a" placeholder="a"> <input type="radio" name="cevap{{ forloop.counter }}" value="b"> <input type="radio" name="cevap{{ forloop.counter }}" value="c"> <input type="radio" name="cevap{{ forloop.counter }}" value="d">
-                        <br>
+                cevap{{ forloop.counter }} <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-light rounded-circle">
+                    <input type="radio" name="cevap{{ forloop.counter }}" value="a" autocomplete="off"> A
+                </label>
+                <label class="btn btn-light rounded-circle">
+                    <input type="radio" name="cevap{{ forloop.counter }}" value="b" autocomplete="off"> B
+                </label>
+                <label class="btn btn-light rounded-circle">
+                    <input type="radio" name="cevap{{ forloop.counter }}" value="c" autocomplete="off"> C
+                </label>
+                <label class="btn btn-light rounded-circle">
+                    <input type="radio" name="cevap{{ forloop.counter }}" value="d" autocomplete="off"> D
+                </label>
+            </div><br>
             {% endfor %}
         <br> <input type="submit" value="Kabul Et">
         {% endif %}
