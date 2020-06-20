@@ -11,13 +11,14 @@ def index_view(request):
 
 def create_view(request, id):
     themes = get_object_or_404(QuizModel, id=id)
-    context = QuizAdd.objects.extra(where=["number='{}'".format(request.user.numara), "quiz_name='{}'".format(themes.quiz_name)])
-    if context:
-        messages.error(request, 'Bu Sınavı Daha Önce Çözdünüz!!!')
-        return redirect('sinav:index')
 
     if not request.user.is_authenticated:
         messages.info(request, 'Testleri çözmek için giriş yapmalısınız!')
+        return redirect('sinav:index')
+
+    context = QuizAdd.objects.extra(where=["number='{}'".format(request.user.numara), "quiz_name='{}'".format(themes.quiz_name)])
+    if context:
+        messages.error(request, 'Bu Sınavı Daha Önce Çözdünüz!!!')
         return redirect('sinav:index')
 
     if request.method == 'POST':
@@ -43,5 +44,8 @@ def create_view(request, id):
 
 
 def list_view(request):
+    if not request.user.is_authenticated:
+        messages.info(request, 'Sonuçlarınızı görmek için giriş yapmalısınız!')
+        return redirect('home:index')
     context = QuizAdd.objects.extra(where=["number={}".format(request.user.numara)])
     return render (request, 'sinav/liste.html', {'context':context})
