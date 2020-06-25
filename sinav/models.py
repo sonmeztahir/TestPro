@@ -13,6 +13,7 @@ class QuizModel(models.Model):
     def get_absolute_url(self):
         return reverse('sinav:create', kwargs={'id':self.id})
 
+
 class QuizAdd(models.Model):
     department = models.CharField(max_length=3, verbose_name='Sınıf')
     name = models.CharField(max_length=100, verbose_name='İsim')
@@ -22,7 +23,11 @@ class QuizAdd(models.Model):
     quiz_name = models.CharField(max_length=100, verbose_name='Sınavın Adı')
     quiz_result = models.IntegerField(blank=True, null=True, verbose_name='Aldığı Puan')
     publishing_date = models.DateTimeField(auto_now_add=True, verbose_name='Kayıt Tarihi')
+    yanlislar = models.CharField(max_length=120, verbose_name='Yanlışları')
 
 
     def __str__(self):
-        return self.name
+        return self.yanlislar
+
+    def get_analiz_url(self):
+        return reverse('sinav:analiz', kwargs={'id': self.id})

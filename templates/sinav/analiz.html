@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Analiz Sayfası {% endblock title %}
+
+{% block body %}
+<div class="container col-md-2 offset-md-5">
+    {% if soru_analizi %}
+    Soru Başarı Oranları %
+    {% for item in soru_analizi  %}
+
+    {{item}}<br>
+
+    {% endfor %}
+    {% endif %}
+
+</div>
+{% endblock body %}
