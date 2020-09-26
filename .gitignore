@@ -4,3 +4,13 @@ __pycache__
 venv
 db.sqlite3
 .DS_Store
+
+
+
+==3.0.6
+-crispy-forms
+
+-cleanup
+-ckeditor==5.9.0
+
+
